@@ -224,6 +224,7 @@ bool detectCycle(node* &head){
     }
   }
   return false;
+  
 }
 
 int main(){
@@ -272,6 +273,8 @@ int main(){
   //   merge(head,head2);
   //   display(head);
   // }
+
+  //function to take input from user for merging two sorted list
 
   int t;
   cin>>t;
