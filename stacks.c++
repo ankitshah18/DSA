@@ -43,18 +43,6 @@ int main(){
     s.pop();
    }
   
-  //  cout<<endl;
-
-  //  Stack <int> s1;
-  //   for(int i=65; i<=70; i++){
-  //   s1.push(i+2);
-  //  }
-
-  //  while(!s1.empty()){
-  //   cout<<s1.top()<<endl;
-  //   s1.pop();
-  //  }
-
-
+  
   return 0;
 }

@@ -28,6 +28,32 @@ void reverseStack(stack<int> &s1){
   }
 }
 
+void insertAtBottom(stack<int> &s, int x){
+  //base case
+  if (s.empty()){
+    s.push(x);
+    return;
+  }
+  //rec case
+  int data = s.top();
+  s.pop();
+  insertAtBottom(s,x);
+  s.push(data);
+}
+
+void reverseStackRec(stack<int> &s){
+  //base case
+  if (s.empty()) return ;
+
+  //otherwise
+  //pop out the top element and insert it at the bottom of "reversed smaller stack"
+  int x = s.top();
+  s.pop();
+  //rec reverse the smaller stack
+  reverseStackRec(s);
+  insertAtBottom(s,x);
+}
+
 int main(){
 
   stack<int> s;
@@ -36,16 +62,18 @@ int main(){
   s.push(2);
   s.push(3);
   s.push(4);
-
-  
-
-  reverseStack(s);
+  s.push(5);
 
   while(!s.empty()){
     cout<<s.top()<<" ";
     s.pop();
   }
 
+  
+
+  reverseStack(s);
+
+  
 
   return 0;
 }
