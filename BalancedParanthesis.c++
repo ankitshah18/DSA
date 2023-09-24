@@ -1,38 +1,61 @@
 #include "bits/stdc++.h"//header file   
 using namespace std; //standard c++ namespace
 
-
-
-bool isValidExp(char *s){
-  
-  stack<char> s1;
-
-  for(int i=0; s[i]!='\0'; i++){
-    char ch = s[i];
-    if(ch == '('){
-      s1.push(ch);
+bool balance(string str)
+{
+    int n = str.length() ; 
+    stack <char> s ; 
+    for(int i = 0 ; i < n; i++)
+    {
+        if(str[i] == '(' || str[i] == '{' || str[i] == '[')
+        {
+            s.push(str[i]) ; 
+        }
+        if(str[i] == ')')
+        {
+            if(s.empty() || s.top() != '(')
+            {
+                return false ; 
+            }
+            s.pop() ; 
+        }
+        if(str[i] == '}')
+        {
+            if(s.empty() || s.top() != '{')
+            {
+                return false ; 
+            }
+            s.pop() ; 
+        }
+        if(str[i] == ']')
+        {
+            if(s.empty() || s.top() != '[')
+            {
+                return false ; 
+            }
+            s.pop() ; 
+        }
     }
-    else if(ch == ')'){
-      if(s1.empty() or s1.top()!='('){
-        return false;
-      }
-      s1.pop();
+    if(s.empty() == true)
+    {
+        return true ; 
     }
-  }
-
-
-  return s1.empty();
+    else
+    {
+        return false ; 
+    }
 }
-
-int main(){
-
-  char s[100] = "((a+b) + (c-d+f)";
-  if(isValidExp(s)){
-    cout<<"Yes";
-  }
-  else{
-    cout<<"No";
-  }
-
-  return 0;
+int main() 
+{
+    string str ; 
+    cin>>str ; 
+    bool p = balance(str) ; 
+    if(p)
+    {
+        cout<<"Yes" ; 
+    }
+    else
+    {
+        cout<<"No" ; 
+    }
 }
