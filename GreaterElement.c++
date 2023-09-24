@@ -1,4 +1,30 @@
-vector<long long> nextGreaterElements(vector<long long>& nums) {
+#include "bits/stdc++.h"//header file   
+using namespace std; //standard c++ namespace
+
+//   vector<long long> nextLargerElement(vector<long long> arr, int n){
+//         // Your code here
+        
+//         stack<long long> stk;
+//         vector<long long> vec;
+        
+//         vec.push_back(-1);
+//         stk.push(arr[n-1]);
+        
+//         for(long long i = n-2; i >= 0; i--){
+//             while(!stk.empty() && stk.top() <= arr[i]){
+//                 stk.pop();
+//             }
+            
+//             long long next = (stk.empty() ? -1 : stk.top());
+//             vec.push_back(next);
+//             stk.push(arr[i]);
+//         }
+//         reverse(vec.begin(), vec.end());
+//         return vec;
+//  }
+
+
+ vector<long long> nextGreaterElements(vector<long long>& nums) {
         int n = nums.size();
 
         stack<int> stk;

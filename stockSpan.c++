@@ -2,15 +2,18 @@
 using namespace std; //standard c++ namespace
 
 
-void stockSpan(int prices[], int n, int span[]){
+vector<long long> stockSpan(vector<long long> &prices){
+
+  int n = prices.size();
 
   stack<int> s; //indices of the day
   s.push(0);
+  vector<long long> span(n);
 
   span[0] = 1;
 
   //loop for rest of the days -> O(N) -> Push and Pop each element only once
-  for(int i=1; i<=n; i++){
+  for(int i=1; i<n; i++){
     
     int currentPrice = prices[i];
     //topmost element which is higher than the current price
@@ -30,21 +33,27 @@ void stockSpan(int prices[], int n, int span[]){
     s.push(i);
 
   }
+  return span;
 
 
 }
 
 
 int main(){
+  int n;
+  cin>>n;
 
-  int prices[] = {100,80,60,70,60,75,85};
-  int n = sizeof(prices)/sizeof(int);
-  int span[100000] = {0};
-
-  stockSpan(prices,n,span);
-  for(int i=0; i<n; i++){
-    cout<<span[i]<<" ";
+  vector<long long> prices(n,0);
+  for(int i = 0; i < n; i++){
+    cin>>prices[i];
   }
+  
+  vector<long long> res = stockSpan(prices);
+
+  for(int i = 0; i<res.size(); i++){
+    cout<<res[i]<<" ";
+  }
+  cout<<"END";
 
   return 0;
 }
